@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'HeadingProHeavy';
+    src: url('/fonts/Heading-Pro-Heavy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'NeueMontreal';
+    src: url('/fonts/Neue-Montreal.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* Apply the HeadingProHeavy font as the primary font */
+  .h2 {
+    font-family: 'HeadingProHeavy', sans-serif;
+  }
+  
+  /* Example usage of NeueMontreal */
+  body {
+    font-family: 'NeueMontreal', sans-serif;
+  }
+  
