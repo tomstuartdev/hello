@@ -24,13 +24,22 @@ export default function PostsList({
               <time className="sm:absolute left-0 inline-flex items-center justify-center text-sm font-medium w-14 h-6 mb-3 sm:mb-0 h2 uppercase text-white dark:text-black bg-black dark:bg-[#A8FF00] rounded-lg">
                 {post.date}
               </time>
+              <div className="flex flex-col w-full">
+              <img className="shrink-0 w-full flex mb-4"
+                src={post.bannerImg}
+                width={32}
+                height={32}
+                alt={post.author}></img>
               <h2 className="text-lg leading-6 font-semibold text-neutral-800 dark:text-neutral-200">
                 {post.title}
               </h2>
+              </div>
             </header>
             {/* Content */}
             <div className="mb-4">
+              
               <p className="text-neutral-600 dark:text-neutral-500">{post.content}</p>
+              
             </div>
             <footer className="flex items-center space-x-3">
               <img

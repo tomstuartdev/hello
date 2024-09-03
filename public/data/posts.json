@@ -1,92 +1,62 @@
 [
     {
-        "id": 0,
-        "title": "Adding support for Next.js 14",
-        "content": "When people upgrade from one version to another, it should be painfully clear when something will break. It should be possible to upgrade to a version that lists deprecations, remove what's deprecated, then upgrade to the version where the deprecations become removals.",
+        "id": 1,
+        "title": "Class of ‘24: Emerging Artists Showcase",
+        "content": "TRAX championed eight of the hottest up-and-coming artists on our platform, culminating in a stellar industry event in London. The event featured live performances by Blanco, Master Peace, and Rosa Cecilia. This showcase highlighted TRAX’s commitment to promoting emerging talent in the music industry.",
         "author": "Rodrigo Sharma",
         "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
-        "date": "Aug 27",
-        "category": "New"
-    },
-    {
-        "id": 1,
-        "title": "Introducing Waitlist's OpenAPI Spec",
-        "content": "When people upgrade from one version to another, it should be painfully clear when something will break. It should be possible to upgrade to a version that lists deprecations, remove what's deprecated, then upgrade to the version where the deprecations become removals.",
-        "author": "Mary Cienfuegos",
-        "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-02.jpg",
-        "date": "Aug 24",
-        "category": "New"
+        "date": "Mar ‘24",
+        "category": "Events",
+        "bannerImg": "/images/class-of-24-banner.png"
     },
     {
         "id": 2,
-        "title": "Supabase Integration",
-        "content": "When people upgrade from one version to another, it should be painfully clear when something will break. It should be possible to upgrade to a version that lists deprecations, remove what's deprecated, then upgrade to the version where the deprecations become removals.",
-        "author": "Joe Samuel",
-        "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-03.jpg",
-        "date": "Aug 24",
-        "category": "News"
+        "title": "TRAX x Bobby Shmurda",
+        "content": "In collaboration with iconic New York rapper Bobby Shmurda, TRAX hosted a sold-out superfan concert in the heart of London. This event marked a significant moment in our efforts to bring global artists closer to their fans, offering an unforgettable live music experience.",
+        "author": "Rodrigo Sharma",
+        "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
+        "date": "Apr ‘24",
+        "category": "Events",
+        "bannerImg": "/images/bobby-banner.png"
     },
     {
         "id": 3,
-        "title": "Release Version 0.4",
-        "content": "When people upgrade from one version to another, it should be painfully clear when something will break. It should be possible to upgrade to a version that lists deprecations, remove what's deprecated, then upgrade to the version where the deprecations become removals.",
+        "title": "TRAX partners with BEAM",
+        "content": "TRAX became the official digital storefront for GoldLink’s IFFY FM lifestyle and culture brand. Together, we took over the streets of London to showcase our latest collaboration, merging music, lifestyle, and culture in an innovative way.",
         "author": "Rodrigo Sharma",
         "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
-        "date": "Aug 22",
-        "category": "News"
+        "date": "Jul ‘24",
+        "category": "Partnerships",
+        "bannerImg": "/images/beam-partnership-banner.png"
     },
     {
         "id": 4,
-        "title": "Duplicate prioritization roadmaps",
-        "content": "When people upgrade from one version to another, it should be painfully clear when something will break. It should be possible to upgrade to a version that lists deprecations, remove what's deprecated, then upgrade to the version where the deprecations become removals.",
-        "author": "Joe Samuel",
-        "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-03.jpg",
-        "date": "Aug 20",
-        "category": "News"
+        "title": "The Future’s Yesterday: Kenny Allstar x TRAX",
+        "content": "TRAX supported the roll-out of the UK’s number one urban DJ, Kenny Allstar’s latest mixtape. We organized a sold-out listening party, premiering the mixtape to Kenny’s closest fans. This was the first of many collaborations with leading figures in the urban music scene.",
+        "author": "Rodrigo Sharma",
+        "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
+        "date": "Aug ‘24",
+        "category": "Events",
+        "bannerImg": "/images/class-of-24-banner.png"
     },
     {
         "id": 5,
-        "title": "The Changelog widget",
-        "content": "When people upgrade from one version to another, it should be painfully clear when something will break. It should be possible to upgrade to a version that lists deprecations, remove what's deprecated, then upgrade to the version where the deprecations become removals.",
+        "title": "Trademark Secured",
+        "content": "TRAX received confirmation of our copyright ownership. This milestone is a crucial step in protecting and developing our brand as we continue to expand our influence in the music industry.",
         "author": "Rodrigo Sharma",
         "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
-        "date": "Aug 20",
-        "category": "News"
+        "date": "Aug ‘24",
+        "category": "Announcements",
+        "bannerImg": "/images/class-of-24-banner.png"
     },
     {
         "id": 6,
-        "title": "Sample post in the Admin category",
-        "content": "When people upgrade from one version to another, it should be painfully clear when something will break. It should be possible to upgrade to a version that lists deprecations, remove what's deprecated, then upgrade to the version where the deprecations become removals.",
+        "title": "Fresh New Look for TRAX",
+        "content": "In partnership with Slaps Creative (with previous work for Nike, Oakley, Netflix), TRAX finalized a sleek new brand identity that reflects our commitment to being future-facing. This rebranding positions TRAX as a leader in decentralized music on the ICP platform.",
         "author": "Rodrigo Sharma",
         "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
-        "date": "Aug 20",
-        "category": "Admin"
-    },
-    {
-        "id": 7,
-        "title": "Sample post in the General category",
-        "content": "When people upgrade from one version to another, it should be painfully clear when something will break. It should be possible to upgrade to a version that lists deprecations, remove what's deprecated, then upgrade to the version where the deprecations become removals.",
-        "author": "Rodrigo Sharma",
-        "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
-        "date": "Aug 20",
-        "category": "General"
-    },
-    {
-        "id": 8,
-        "title": "Sample post in the Improvements category",
-        "content": "When people upgrade from one version to another, it should be painfully clear when something will break. It should be possible to upgrade to a version that lists deprecations, remove what's deprecated, then upgrade to the version where the deprecations become removals.",
-        "author": "Rodrigo Sharma",
-        "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
-        "date": "Aug 20",
-        "category": "Improvements"
-    },
-    {
-        "id": 9,
-        "title": "Sample post in the Legal category",
-        "content": "When people upgrade from one version to another, it should be painfully clear when something will break. It should be possible to upgrade to a version that lists deprecations, remove what's deprecated, then upgrade to the version where the deprecations become removals.",
-        "author": "Rodrigo Sharma",
-        "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
-        "date": "Aug 20",
-        "category": "Legal"
+        "date": "Sep ‘24",
+        "category": "Announcement",
+        "bannerImg": "/images/class-of-24-banner.png"
     }
 ]

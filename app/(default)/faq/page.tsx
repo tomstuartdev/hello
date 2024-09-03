@@ -10,44 +10,34 @@ import Cta from "@/components/cta";
 export default function Faq() {
   const faqs = [
     {
-      title: "When the software will be released?",
-      text: "One-time Licenses are limited by the number of software. A software is essentially a tool hosted on a single web server or IP Address.",
+      title: "What is TRAX?",
+      text: "TRAX users support their favourite artists by paying to hear new music first. By changing the rules of how music is shared online, our platform empowers creators to make real connections and begin earning more from their art earlier in their career.",
       active: false,
     },
     {
       title:
-        "Are there any limits to the number of exported tools from Waitlist?",
-      text: "One-time Licenses are limited by the number of software. A software is essentially a tool hosted on a single web server or IP Address.",
+        "What happens when I follow/subscribe to an artist?",
+      text: "Following an artist keeps you in the loop on career updates and new releases coming to TRAX. Artists are able to see the email addresses of anyone who follows them on the platform. You may receive newsletter updates from artists you follow from your user account.",
       active: false,
     },
     {
-      title: "Do you provide any support?",
-      text: "One-time Licenses are limited by the number of software. A software is essentially a tool hosted on a single web server or IP Address.",
+      title: "Who can sign up as an artist?",
+      text: "TRAX invites anyone who makes music to sign up to the platform and begin earning more from their art. We perform ID checks on all new sign-ups to make sure artists are who they say they are and for KYC purposes.",
       active: false,
     },
     {
-      title: "What does the term “per software” mean in the License?",
-      text: "One-time Licenses are limited by the number of software. A software is essentially a tool hosted on a single web server or IP Address.",
+      title: "What payment methods can I use?",
+      text: "TRAX supports credit card and PayPal payments. As a blockchain project, we also enable fans to pay with crypto by creating a wallet on the ICP network and integrating it with their account. We recommend first-time users interested in crypto check out Plug.",
       active: true,
     },
     {
-      title: "How is Waitlist different from X?",
-      text: "One-time Licenses are limited by the number of software. A software is essentially a tool hosted on a single web server or IP Address.",
+      title: "How does the referral system work?",
+      text: "Our Referral Scheme allows for current artist users to introduce new artist users to the site, and the chance to benefit from doing so. As an artist you may earn 5% from all transactions on a referred artist's account for 12 months if they sign up using your unique referral link and code. Please see our referral policy for more information.",
       active: false,
     },
     {
-      title: "What happens if I don't renew my license after one year?",
-      text: "One-time Licenses are limited by the number of software. A software is essentially a tool hosted on a single web server or IP Address.",
-      active: false,
-    },
-    {
-      title: "How does billing work?",
-      text: "One-time Licenses are limited by the number of software. A software is essentially a tool hosted on a single web server or IP Address.",
-      active: false,
-    },
-    {
-      title: "What is your cancellation or refund policy?",
-      text: "One-time Licenses are limited by the number of software. A software is essentially a tool hosted on a single web server or IP Address.",
+      title: "How can I work with TRAX?",
+      text: "TRAX aims to put creators at the centre of everything we do. If you have a new project you'd like to bring to TRAX and require input or support from us, please reach out at support@trax.so and provide as much detail as you can.",
       active: false,
     },
   ];
@@ -55,12 +45,12 @@ export default function Faq() {
   return (
     <>
       <section>
-        <div className="pt-32 pb-12 md:pt-44 md:pb-20">
+        <div className="pt-12 pb-12 md:pt-12 md:pb-20">
           <div className="px-4 sm:px-6">
             <PageHeader
               className="mb-12 md:mb-20"
               title="Learn more about TRAX"
-              description="Here we provide answers for the most common questions. From registering and accessing your account to payments and paid subscriptions."
+              description="Here we provide answers for the most common questions. From creating an account to payments and paid subscriptions."
             >
               Quick Answers
             </PageHeader>

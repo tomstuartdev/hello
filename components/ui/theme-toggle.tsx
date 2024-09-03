@@ -6,7 +6,7 @@ export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="flex-1 flex justify-end">
+    <div className=" flex justify-end">
       <input
         type="checkbox"
         name="light-switch"

@@ -1,4 +1,5 @@
 type Post = {
+  bannerImg: string | undefined;
   id: number;
   title: string;
   content: string;

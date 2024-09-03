@@ -7,8 +7,8 @@ Note: This code includes an example of how to fetch data from an external JSON f
 import getAllPosts from "@/lib/getAllPosts";
 
 export const metadata = {
-  title: "Updates - Creative",
-  description: "Page description",
+  title: "TRAX | Updates",
+  description: "A new way for artists to release music, capture fan data and earn more from their art.",
 };
 
 import PageHeader from "@/components/page-header";
@@ -22,7 +22,7 @@ export default async function Updates() {
   return (
     <>
       <section>
-        <div className="pt-32 pb-12 md:pt-44 md:pb-20">
+        <div className="pt-12 pb-12 md:pt-12 md:pb-20">
           <div className="px-4 sm:px-6">
             <PageHeader
               title="News & Updates"

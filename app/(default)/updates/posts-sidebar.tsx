@@ -15,7 +15,7 @@ export default function PostsSidebar({
 
   const getIcon = (category: string) => {
     switch (category) {
-      case "New":
+      case "Events":
         return (
           <svg
             className="shrink-0 fill-[#A8FF00]"
@@ -26,7 +26,7 @@ export default function PostsSidebar({
             <path d="M15 6h-4a1 1 0 1 1 0-2h4a1 1 0 1 1 0 2ZM15 2h-4a1 1 0 1 1 0-2h4a1 1 0 1 1 0 2ZM15 10h-4a1 1 0 1 1 0-2h4a1 1 0 1 1 0 2ZM15 14H1a1 1 0 1 1 0-2h14a1 1 0 1 1 0 2ZM1.914 9.406l.626-1.409.015.003h4l.015-.003.626 1.409a1 1 0 1 0 1.828-.813L5.47.594a1.001 1.001 0 0 0-1.828 0l-3.556 8a1 1 0 1 0 1.828.812Zm2.642-5.945 1.128 2.538H3.428l1.128-2.538Z" />
           </svg>
         );
-      case "Admin":
+      case "Announcement":
         return (
           <svg
             className="shrink-0 fill-[#A8FF00]"

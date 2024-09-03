@@ -27,10 +27,10 @@ export default function PageHeader({
           </div>
         </div> */}
         <div>
-          <h1 className="uppercase text-[8rem] tracking-tighter leading-[6.5rem] h2 md:leading-[9rem] md:text-[11rem] font-bold text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-b dark:from-[#A8FF00] dark:to-[#A8FF00] pb-4">
+          <h1 className="uppercase text-[6rem] tracking-tighter leading-[5rem] h2 md:leading-[9rem] md:text-[11rem] font-bold text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-b dark:from-[#A8FF00] dark:to-[#A8FF00] pb-4">
             {title}
           </h1>
-          <p className="text-lg font-semibold text-neutral-700 dark:text-neutral-200">
+          <p className="text-lg font-semibold text-neutral-900 dark:text-neutral-200">
             {description}
           </p>
         </div>
