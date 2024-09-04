@@ -1,5 +1,5 @@
 'use client'
-import Image, {StaticImageData} from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import React, { useState, useEffect, useRef } from 'react';
 
 interface ImageCloudItem {
@@ -13,14 +13,10 @@ interface ImagePosition {
   x: number;
   y: number;
   z: number;
-  speedX: number;
-  speedY: number;
-  speedZ: number;
-  directionX: 1 | -1;
-  directionY: 1 | -1;
-  directionZ: 1 | -1;
   scale: number;
   blur: number;
+  speed: number;
+  angle: number;
 }
 
 interface ImageCloudTickerProps {
@@ -35,7 +31,10 @@ const ImageCloudTicker: React.FC<ImageCloudTickerProps> = ({ images, tickerText 
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+      setWindowSize({ 
+        width: window.innerWidth, 
+        height: window.innerHeight 
+      });
     };
 
     handleResize();
@@ -46,22 +45,21 @@ const ImageCloudTicker: React.FC<ImageCloudTickerProps> = ({ images, tickerText 
   useEffect(() => {
     const { width, height } = windowSize;
     const isMobile = width <= 768;
-    const speedFactor = isMobile ? 0.2 : 0.25;
-    const zSpeedFactor = isMobile ? 3 : 5;
+    const imageCount = Math.min(images.length, isMobile ? 12 : 20); // Limit images on mobile
 
-    const initialPositions = images.map(() => ({
-      x: (Math.random() - 0.5) * width,  // Spread across full width
-      y: (Math.random() - 0.5) * height, // Spread across full height
-      z: Math.random() * 1000,
-      speedX: (0.5 + Math.random()) * speedFactor,
-      speedY: (0.5 + Math.random()) * speedFactor,
-      speedZ: zSpeedFactor + Math.random() * zSpeedFactor,
-      directionX: Math.random() < 0.5 ? 1 : -1 as 1 | -1,
-      directionY: Math.random() < 0.5 ? 1 : -1 as 1 | -1,
-      directionZ: Math.random() < 0.5 ? 1 : -1 as 1 | -1,
-      scale: 0,
-      blur: 0,
-    }));
+    const initialPositions = Array.from({ length: imageCount }, (_, index) => {
+      const angle = Math.random() * Math.PI * 2;
+      const radius = Math.random() * 0.5; // Reduced radius for tighter grouping
+      const x = Math.cos(angle) * radius * width / 2;
+      const y = Math.sin(angle) * radius * height / 2;
+      const z = Math.random() * 1000 - 500;
+      const scale = isMobile ? 0.3 + Math.random() * 0.2 : 0.5 + Math.random() * 0.3;
+      const blur = Math.random() * 10;
+      const speed = (0.1 + Math.random() * 0.1) * (isMobile ? 0.5 : 1); // Slower on mobile
+
+      return { x, y, z, scale, blur, speed, angle };
+    });
+
     setPositions(initialPositions);
   }, [images, windowSize]);
 
@@ -71,47 +69,34 @@ const ImageCloudTicker: React.FC<ImageCloudTickerProps> = ({ images, tickerText 
         const { width, height } = windowSize;
         const isMobile = width <= 768;
         
-        let newX = pos.x + pos.speedX * pos.directionX;
-        let newY = pos.y + pos.speedY * pos.directionY;
-        let newZ = pos.z + pos.speedZ * pos.directionZ;
-        let newDirectionX = pos.directionX;
-        let newDirectionY = pos.directionY;
-        let newDirectionZ = pos.directionZ;
+        let newAngle = pos.angle + pos.speed * 0.02;
+        if (newAngle > Math.PI * 2) newAngle -= Math.PI * 2;
 
-        const maxX = width / 2;
-        const maxY = height / 2;
+        const radius = 0.3 + Math.sin(newAngle) * 0.2; // Reduced radius
+        let newX = Math.cos(newAngle) * radius * width / 2;
+        let newY = Math.sin(newAngle) * radius * height / 2;
 
-        if (Math.abs(newX) >= maxX) {
-          newDirectionX = -newDirectionX as 1 | -1;
-        }
-        if (Math.abs(newY) >= maxY) {
-          newDirectionY = -newDirectionY as 1 | -1;
-        }
-        if (newZ <= 0 || newZ >= 1000) {
-          newDirectionZ = -newDirectionZ as 1 | -1;
+        // Adjust for mobile
+        if (isMobile) {
+          newX *= 0.8;
+          newY *= 0.8;
         }
 
-        newX = Math.max(-maxX, Math.min(maxX, newX));
-        newY = Math.max(-maxY, Math.min(maxY, newY));
-        newZ = Math.max(0, Math.min(1000, newZ));
-
-        const depthFactor = 1 - Math.abs(newY) / maxY;
-        const targetScale = isMobile ? (0.15 + depthFactor * 0.35) : (0.25 + depthFactor * 0.75);
-        const targetBlur = (1 - depthFactor) * (isMobile ? 3 : 5);
-
-        const newScale = pos.scale + (targetScale - pos.scale) * 0.1;
-        const newBlur = pos.blur + (targetBlur - pos.blur) * 0.1;
+        const newZ = (1 - radius) * 1000 - 500;
+        const depthFactor = (newZ + 500) / 1000;
+        const newScale = isMobile 
+          ? (0.3 + depthFactor * 0.2)
+          : (0.5 + depthFactor * 0.3);
+        const newBlur = (1 - depthFactor) * 10;
 
         return {
           ...pos,
           x: newX,
           y: newY,
           z: newZ,
-          directionX: newDirectionX,
-          directionY: newDirectionY,
-          directionZ: newDirectionZ,
           scale: newScale,
           blur: newBlur,
+          angle: newAngle
         };
       })
     );
@@ -128,44 +113,66 @@ const ImageCloudTicker: React.FC<ImageCloudTickerProps> = ({ images, tickerText 
     };
   }, [windowSize]);
 
-  const tickerZIndex = 500;
-
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative -mt-36 sm:-mt-28 w-full h-screen overflow-hidden">
       {positions.map((pos, index) => (
         <span 
           key={index} 
-          className="tagcloud--item absolute"
+          className="absolute"
           style={{
-            willChange: 'transform, filter',
-            position: 'absolute',
+            willChange: 'transform, filter, opacity',
             top: '50%',
             left: '50%',
-            zIndex: Math.floor(pos.z),
-            transform: `translate(${pos.x}px, ${pos.y}px) scale(${pos.scale})`,
+            zIndex: Math.floor(pos.z + 500),
+            transform: `translate(-50%, -50%) translate(${pos.x}px, ${pos.y}px) scale(${pos.scale})`,
             filter: `blur(${pos.blur}px)`,
-            transition: 'transform 0.2s ease-out, filter 0.2s ease-out',
+            opacity: (pos.z + 500) / 1000,
+            transition: 'transform 0.3s ease-out, filter 0.3s ease-out, opacity 0.3s ease-out',
           }}
         >
           <Image 
-            src={images[index].src} 
-            alt={images[index].alt} 
-            width={images[index].width}
-            height={images[index].height}
+            src={images[index % images.length].src}
+            alt={images[index % images.length].alt}
+            width={images[index % images.length].width}
+            height={images[index % images.length].height}
             className="max-w-none w-auto h-auto"
             loading="lazy"
           />
         </span>
       ))}
-      <div className="title absolute top-1/4 left-0 w-full overflow-hidden transform -translate-y-1/2" style={{ zIndex: tickerZIndex }}>
-        <div className="ticker-bar whitespace-nowrap animate-continuous-ticker py-4">
-          <div className="ticker-item inline-block">
-            <span className="text-white text-[clamp(4rem,16vw,24rem)] h2 uppercase tracking-tighter font-bold mix-blend-difference">
+      <div className="absolute top-1/2 left-0 w-full overflow-hidden transform -translate-y-1/2" style={{ zIndex: 1000 }}>
+        <div className="ticker-container whitespace-nowrap overflow-hidden">
+          <div className="ticker-content inline-block animate-ticker">
+            <span className="ticker-item text-white text-[clamp(12rem,15vw,18rem)] h2 uppercase font-bold mix-blend-difference mr-8">
+              {tickerText}
+            </span>
+            <span className="ticker-item text-white text-[clamp(12rem,15vw,18rem)] h2 uppercase font-bold mix-blend-difference mr-8">
               {tickerText}
             </span>
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes ticker {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-ticker {
+          animation: ticker 20s linear infinite;
+        }
+        .ticker-container {
+          width: 100%;
+        }
+        .ticker-content {
+          display: inline-block;
+          white-space: nowrap;
+          padding-right: 100%;
+        }
+      `}</style>
     </div>
   );
 };

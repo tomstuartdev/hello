@@ -11,7 +11,7 @@ module.exports = {
       animation: {
         ticker: 'ticker 100s linear infinite',
         'fast-ticker': 'ticker 20s linear infinite',
-        'continuous-ticker': 'continuous-ticker 15s linear infinite',
+        'continuous-ticker': 'continuous-ticker 5s linear infinite',
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

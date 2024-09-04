@@ -26,7 +26,7 @@ export default function Home() {
     { src: Image4, alt: "Image 8", width: 300, height: 300 },
   ];
   
-  const tickerText = "NEW MU$IC $TART$ HERE NEW MU$IC $TART$ HERE NEW MU$IC $TART$ HERE NEW MU$IC $TART$ HERE ";
+  const tickerText = "TRAX IS A NEW MUSIC PLATFORM $ NEW MUSIC STARTS HERE $ EXCLUSIVE RELEASES FROM YOUR FAVOURITE ARTISTS $ ";
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
