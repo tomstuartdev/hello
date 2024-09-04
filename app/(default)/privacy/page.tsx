@@ -79,11 +79,9 @@ export const metadata = {
             <li>Give feedback or contact us.</li>
           </ul>
         </li>
-
         <li>
           <strong>Automated technologies or interactions:</strong> We automatically collect Technical Data as you interact with our website using cookies, server logs, and similar technologies.
         </li>
-
         <li>
           <strong>Third parties or publicly available sources:</strong> We receive personal data from:
           <ul className="list-disc pl-6 mt-2 space-y-1">
@@ -95,8 +93,8 @@ export const metadata = {
           </ul>
         </li>
         </ul>
-        
       </section>
+
       <section className="relative mx-auto max-w-[37.5rem] pt-20 text-left">
         <h2 className="text-2xl font-semibold mb-4">4. How we use your personal data</h2>
         <h3 className="font-semibold mt-2 mb-2">Legal bases</h3>
@@ -131,17 +129,14 @@ export const metadata = {
           </thead>
           <tbody>
             <tr>
-              <td className="px-4 py-2 border-b text-gray-700">To provide the Site Service to you, including registering you as a user of the Site. For example, we use these types of data to:
-ensure that users are real people and meet the criteria set out in our terms;
-ensure that we have a way to contact you where necessary and in accordance with our terms; and
-provide you with access to the Site and the Site’s features as applicable, including allowing you to set up an account.</td>
-              <td className="px-4 py-2 border-b text-gray-700">Identity Data
-Contact Data
-Account Data
-Profile Data
-Technical Data</td>
-              <td className="px-4 py-2 border-b text-gray-700">Performance of a contract with you
-Consent
+              <td className="px-4 py-2 border-b text-gray-700">
+                To provide the Site Service to you, including registering you as a user of the Site. For example, we use these types of data to:
+                ensure that users are real people and meet the criteria set out in our terms;
+                ensure that we have a way to contact you where necessary and in accordance with our terms; and
+                provide you with access to the Site and the Site’s features as applicable, including allowing you to set up an account.
+              </td>
+              <td className="px-4 py-2 border-b text-gray-700">Identity Data Contact Data Account Data Profile Data Technical Data</td>
+              <td className="px-4 py-2 border-b text-gray-700">Performance of a contract with you Consent
 Necessary to comply with a legal obligation to protect ourselves and our users against fraud and any other illegal activity.
 Necessary for our legitimate interests including:
 permitting new users to sign up to the Site and use the Site Service
@@ -161,11 +156,13 @@ We will retain this data for 1 year post termination of Subscription or terminat
             </tr>
             <tr>
               <td className="px-4 py-2 border-b text-gray-700">To deliver relevant Content to you through the Site and to communicate with you directly where necessary for example to provide you with information about an event.</td>
-              <td className="px-4 py-2 border-b text-gray-700">Identity Data
-Contact Data
-Account Data
-Profile Data
-Technical Data</td>
+              <td className="px-4 py-2 border-b text-gray-700">
+                Identity Data
+                Contact Data
+                Account Data
+                Profile Data
+                Technical Data
+              </td>
               <td className="px-4 py-2 border-b text-gray-700">Consent
 Performance of a contract with you
 We will retain this data for 1 year post termination of Subscription or termination of User licence, whichever is the latest of the two events.</td>

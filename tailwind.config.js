@@ -8,6 +8,11 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      animation: {
+        ticker: 'ticker 100s linear infinite',
+        'fast-ticker': 'ticker 20s linear infinite',
+        'continuous-ticker': 'continuous-ticker 15s linear infinite',
+      },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
         "inter-tight": ["Inter Tight", "sans-serif"],
@@ -29,6 +34,18 @@ module.exports = {
         "7xl": ["4.5rem", { lineHeight: "1", letterSpacing: "-0.017em" }],
       },
       keyframes: {
+        'ticker-scroll': {
+          '0%': { transform: 'translate3d(0,0,0)' },
+          '100%': { transform: 'translate3d(calc(-1 * var(--ticker-width)), 0, 0)' },
+        },
+        'continuous-ticker': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        ticker: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
         swing: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-100px)" },
@@ -38,3 +55,4 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/forms")],
 };
+
