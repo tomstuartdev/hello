@@ -143,12 +143,10 @@ const ImageCloudTicker: React.FC<ImageCloudTickerProps> = ({ images, tickerText 
       <div className="absolute top-1/2 left-0 w-full overflow-hidden transform -translate-y-1/2" style={{ zIndex: 1000 }}>
         <div className="ticker-container whitespace-nowrap overflow-hidden">
           <div className="ticker-content inline-block animate-ticker">
-            <span className="ticker-item text-white text-[clamp(12rem,15vw,18rem)] h2 uppercase font-bold mix-blend-difference mr-8">
+            <span className="ticker-item text-black dark:text-white tracking-tighter text-[clamp(12rem,15vw,10rem)] h2 uppercase font-bold mix-blend-difference mr-8">
               {tickerText}
             </span>
-            <span className="ticker-item text-white text-[clamp(12rem,15vw,18rem)] h2 uppercase font-bold mix-blend-difference mr-8">
-              {tickerText}
-            </span>
+            
           </div>
         </div>
       </div>
@@ -162,7 +160,7 @@ const ImageCloudTicker: React.FC<ImageCloudTickerProps> = ({ images, tickerText 
           }
         }
         .animate-ticker {
-          animation: ticker 20s linear infinite;
+          animation: ticker 30s linear infinite;
         }
         .ticker-container {
           width: 100%;

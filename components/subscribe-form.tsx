@@ -5,6 +5,7 @@ import Avatar02 from "@/public/images/avatar-02.jpg";
 import Avatar03 from "@/public/images/avatar-03.jpg";
 import Avatar04 from "@/public/images/avatar-04.jpg";
 import Avatar05 from "@/public/images/avatar-05.jpg";
+import dfinity from "@/public/images/poweredbyICP.png"
 import { useState, FormEvent } from "react";
 
 export default function SubscribeForm() {
@@ -139,13 +140,16 @@ export default function SubscribeForm() {
               />
             </li>
           </ul>
-          <p className="text-sm text-neutral-500">
-            Join the{" "}
-            <span className="text-neutral-700 dark:text-neutral-200 font-medium">
-              2.000+
+          <p className="text-md text-black dark:text-[#B3B3B3]">
+            Join a growing community{" "}
+            <span className="text-black dark:text-[#F2F2F2] font-semibold">
+              of 5.000+
             </span>{" "}
             members already on TRAX.
           </p>
+          <div>
+            <Image className="mx-auto mt-8" src={dfinity} width={200} alt="" />
+          </div>
         </div>
       </div>
     </>

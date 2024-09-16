@@ -1,11 +1,13 @@
 'use client'
 
-import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import logo from '../../public/images/logo.png'
+import logoDark from '../../public/images/logo.png'
+import logoLight from '../../public/images/logomark_light.png'
 import Image from 'next/image'
 import ThemeToggle from './theme-toggle'
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
 const navigation = [
   { name: 'Updates', href: '/updates' },
@@ -17,7 +19,16 @@ const navigation = [
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const { resolvedTheme } = useTheme()
+  const [logo, setLogo] = useState(logoLight)
+
+  useEffect(() => {
+    setLogo(resolvedTheme === 'dark' ? logoDark : logoLight)
+  }, [resolvedTheme])
+
   return (
+
+    
     <header className="bg-clear">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
         <div className="flex lg:flex-1">
@@ -32,6 +43,7 @@ export default function Example() {
               {item.name}
             </a>
           ))}
+          
         </div>
         <div className="flex flex-1 items-center justify-end gap-x-6">
           <a href="#" className="hidden lg:block h2 uppercase lg:text-lg lg:font-semibold lg:leading-6 dark:text-neutral-100 text-neutral-900">
