@@ -13,7 +13,7 @@ const navigation = [
   { name: 'Updates', href: '/updates' },
   { name: 'FAQ', href: '/faq' },
   { name: 'Contact us', href: '/contact' },
-  { name: '$TRAX', href: '#' },
+  { name: '$TRAX', href: 'https://www.coingecko.com/en/coins/trax' },
 ]
 
 export default function Example() {
@@ -46,12 +46,12 @@ export default function Example() {
           
         </div>
         <div className="flex flex-1 items-center justify-end gap-x-6">
-          <a href="#" className="hidden lg:block h2 uppercase lg:text-lg lg:font-semibold lg:leading-6 dark:text-neutral-100 text-neutral-900">
+          <a href="https://trax.so" className="hidden lg:block h2 uppercase lg:text-lg lg:font-semibold lg:leading-6 dark:text-neutral-100 text-neutral-900">
             Log in
           </a>
           <a
-            href="#"
-            className="rounded-md h2 uppercase dark:bg-[#A8FF00] bg-black px-3 py-2 text-lg font-semibold text-white dark:text-black shadow-sm hover:bg- focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            href="https://trax.so"
+            className="rounded-md h2 uppercase dark:bg-[#A8FF00] bg-black px-3 py-2 text-lg font-semibold text-white dark:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Sign up
           </a>
@@ -78,7 +78,7 @@ export default function Example() {
             </a>
             <a
               href="#"
-              className="ml-auto rounded-md h2 uppercase bg-[#A8FF00] px-3 py-2 text-lg font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="ml-auto rounded-md h2 uppercase bg-[#A8FF00] px-3 py-2 text-lg font-semibold text-black shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Sign up
             </a>
@@ -106,8 +106,8 @@ export default function Example() {
               </div>
               <div className="py-6">
                 <a
-                  href="#"
-                  className="-mx-3 block h2 uppercase rounded-lg px-3 py-2.5 text-6xl font-semibold leading-7 text-[#A8FF00] hover:bg-gray-50"
+                  href="https://trax.so"
+                  className="-mx-3 block h2 uppercase rounded-lg px-3 py-2.5 text-6xl font-semibold leading-7 text-[#A8FF00] "
                 >
                   Log in
                 </a>

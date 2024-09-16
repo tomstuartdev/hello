@@ -46,7 +46,7 @@
         "author": "Rodrigo Sharma",
         "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
         "date": "Aug ‘24",
-        "category": "Announcements",
+        "category": "Legal",
         "bannerImg": "/images/class-of-24-banner.png"
     },
     {
@@ -56,7 +56,7 @@
         "author": "Rodrigo Sharma",
         "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
         "date": "Sep ‘24",
-        "category": "Announcement",
+        "category": "General",
         "bannerImg": "/images/class-of-24-banner.png"
     }
 ]

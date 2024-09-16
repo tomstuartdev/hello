@@ -1,6 +1,8 @@
 import Image from "next/image"
-import logo from '../../public/images/logomark_white.svg'
-import { JSX, SVGProps } from "react"
+import logoDark from '../../public/images/logomark_white.svg'
+import logoLight from '../../public/images/logomark_light.png'
+import { JSX, SVGProps, useEffect, useState } from "react"
+import { useTheme } from "next-themes"
 
 const navigation = [
   {
@@ -41,16 +43,23 @@ const navigation = [
 ]
 
 export default function Example() {
+  const { resolvedTheme } = useTheme()
+  const [logo, setLogo] = useState(logoLight)
+
+  useEffect(() => {
+    setLogo(resolvedTheme === 'dark' ? logoDark : logoLight)
+  }, [resolvedTheme])
+
   return (
-    <footer className="mt-12 sm:mt-48 pt-12 border-t-2 border-t border-[#B3B3B320]">
+    <footer className="pt-12 border-t-2 border-t border-[#B3B3B320]">
       <div className="mt-8 px-6 md:order-1 md:mt-0">
-        <p className="text-left text-[3rem] sm:text-[10rem] leading-[2.5rem] sm:leading-[8rem] h2 tracking-tighter font-bold text-[#FFF]">
+        <p className="text-left text-[3rem] sm:text-[10rem] leading-[2.5rem] sm:leading-[8rem] h2 tracking-tighter font-bold text-black dark:text-[#FFF]">
           &copy;2024
         </p>
-        <p className="text-left text-[3rem] sm:text-[10rem] leading-[2.5rem] sm:leading-[8rem] h2 tracking-tighter font-bold text-[#FFF]">
+        <p className="text-left text-[3rem] sm:text-[10rem] leading-[2.5rem] sm:leading-[8rem] h2 tracking-tighter font-bold text-black dark:text-[#FFF]">
           TRAX MEDIA LTD.
         </p>
-        <p className="text-left text-[3rem] sm:text-[10rem] leading-[2.5rem] sm:leading-[8rem] h2 tracking-tighter font-bold text-[#FFF]">
+        <p className="text-left text-[3rem] sm:text-[10rem] leading-[2.5rem] sm:leading-[8rem] h2 tracking-tighter font-bold text-black dark:text-[#FFF]">
           ALL RIGHTS RESERVED.
         </p>
       </div>
@@ -59,30 +68,30 @@ export default function Example() {
           <div className="w-1/3 md:w-auto flex items-center">
             <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <Image alt="" src={logo} className="h-12 w-auto" />
+              <Image alt="" src={logo} className="h-auto w-24" />
             </a>
           </div>
           <div className="w-2/3 md:w-auto flex flex-wrap justify-start md:justify-start gap-x-4 gap-y-2">
-            <a href="/updates" className="text-center text-xl md:text-xl h2 leading-5 my-auto h2 text-[#FFF]">
+            <a href="/updates" className="text-center text-xl md:text-xl h2 leading-5 my-auto h2 text-black dark:text-[#FFF]">
               UPDATES
             </a>
-            <a href="/faq" className="text-center text-xl md:text-xl h2 leading-5 my-auto h2 text-[#FFF]">
+            <a href="/faq" className="text-center text-xl md:text-xl h2 leading-5 my-auto h2 text-black dark:text-[#FFF]">
               FAQ
             </a>
-            <a href="/contact" className="text-center text-xl md:text-xl h2 leading-5 my-auto h2 text-[#FFF]">
+            <a href="/contact" className="text-center text-xl md:text-xl h2 leading-5 my-auto h2 text-black dark:text-[#FFF]">
               CONTACT US
             </a>
-            <a href="https://trax.so/page/?id=privacy-policy" className="text-center text-xl md:text-xl h2 leading-5 my-auto h2 text-[#FFF]">
+            <a href="https://trax.so/page/?id=privacy-policy" className="text-center text-xl md:text-xl h2 leading-5 my-auto h2 text-black dark:text-[#FFF]">
               PRIVACY
             </a>
-            <a href="https://trax.so/page/?id=terms-of-service" className="text-center text-xl md:text-xl h2 leading-5 my-auto h2 text-[#FFF]">
+            <a href="https://trax.so/page/?id=terms-of-service" className="text-center text-xl md:text-xl h2 leading-5 my-auto h2 text-black dark:text-[#FFF]">
               TERMS & CONDITIONS
             </a>
           </div>
         </div>
-        <div className="flex justify-center order-2 space-x-6 md:order-2 mt-8 md:mt-0">
+        <div className="flex justify-center order-2 space-x-6 md:order-2 mt-8 mb-8 md:mt-0">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-[#b3b3b3] bg-[#A2A2A250] hover:text-[#B3B3B3] p-2 rounded-lg">
+            <a key={item.name} href={item.href} className="text-white bg-black/50 dark:text-[#b3b3b3] dark:bg-[#A2A2A250] hover:text-[#B3B3B3] p-2 rounded-lg">
               <span className="sr-only">{item.name}</span>
               <item.icon aria-hidden="true" className="h-6 w-6" />
             </a>

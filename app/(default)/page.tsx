@@ -1,5 +1,7 @@
+
 import React from 'react';
-import ImageCloudTicker from '@/components/image-cloud-ticker';
+
+
 import SubscribeForm from "@/components/subscribe-form";
 import Image1 from '../../public/images/img1.jpg'
 import Image2 from '../../public/images/img2.jpg'
@@ -8,6 +10,7 @@ import Image4 from '../../public/images/img4.jpg'
 import Image5 from '../../public/images/img5.jpg'
 import Image6 from '../../public/images/img6.jpg'
 import Image7 from '../../public/images/img7.jpg'
+import HeroWithGallery from '@/components/hero';
 
 export const metadata = {
   title: "TRAX | New music starts here",
@@ -30,12 +33,8 @@ export default function Home() {
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
-      <div className="absolute inset-0 z-10">
-        <ImageCloudTicker images={images} tickerText={tickerText} />
-      </div>
-      <div className="relative z-20 pt-12 flex flex-col items-center justify-center h-full">
-        
-        <SubscribeForm />
+      <div className='mx-auto'>
+        <HeroWithGallery/>
       </div>
     </section>
   );
