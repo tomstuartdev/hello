@@ -58,5 +58,25 @@
         "date": "Sep ‘24",
         "category": "General",
         "bannerImg": "/images/class-of-24-banner.png"
+    },
+    {
+        "id": 7,
+        "title": "Pay in Bitcoin",
+        "content": "TRAX became the first music platform to allow artists and users to deposit and earn Bitcoin through the adoption of ckBTC, developed by Dfinity. Acting as a Bitcoin 'twin,' ckBTC enables fast, low-fee, cryptographically secure, fully on-chain Bitcoin transactions on the Internet Computer.",
+        "author": "Rodrigo Sharma",
+        "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
+        "date": "Mar ‘24",
+        "category": "General",
+        "bannerImg": "/images/CKBTCBanner.png"
+    },
+    {
+        "id": 8,
+        "title": "TRAX DAO",
+        "content": "TRAX became the first music platform to allow artists and users to deposit and earn Bitcoin through the adoption of ckBTC, developed by Dfinity. Acting as a Bitcoin 'twin,' ckBTC enables fast, low-fee, cryptographically secure, fully on-chain Bitcoin transactions on the Internet Computer.",
+        "author": "Rodrigo Sharma",
+        "authorImage": "https://cruip.github.io/cruip-dummy/waitlist-assets/author-01.jpg",
+        "date": "Mar ‘24",
+        "category": "General",
+        "bannerImg": "/images/TRAXDAOBanner.png"
     }
 ]

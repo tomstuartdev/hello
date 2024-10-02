@@ -8,7 +8,7 @@ import PostsList from "./posts-list";
 export default function Posts({ posts }: { posts: Post[] }) {
   const categories = ["General", "Partnerships", "Events", "Legal"];
 
-  const [selectedCategory, setSelectedCategory] = useState<string>("Events");
+  const [selectedCategory, setSelectedCategory] = useState<string>("General");
 
   return (
     <section>
