@@ -48,7 +48,7 @@ const HeroWithGallery = () => {
             <div className='flex px-4 py-4 bg-black dark:bg-[#A8FF00] max-w-60 rounded-lg mx-auto justify-center'>
             
             <PlayCircleFilled className="mr-2 w-auto text-2xl text-[#A8FF00] dark:text-[#000]"/>
-            <a href="https://stagingapp.trax.so" className='h2 text-2xl uppercase w-auto text-[#FFF] dark:text-black'> START LISTENING</a>
+            <a href="https://trax.so" className='h2 text-2xl uppercase w-auto text-[#FFF] dark:text-black'> START LISTENING</a>
             </div>
             </motion.div>
             
