@@ -8,11 +8,12 @@ import Image from 'next/image'
 import ThemeToggle from './theme-toggle'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
+import { ArrowDownRight } from 'lucide-react'
 
 const navigation = [
   { name: 'Updates', href: '/updates' },
   { name: 'FAQ', href: '/faq' },
-  { name: 'Contact us', href: '/contact' },
+  { name: 'Company', href: '/contact' },
   { name: '$TRAX', href: 'https://www.coingecko.com/en/coins/trax' },
 ]
 
@@ -30,7 +31,7 @@ export default function Example() {
 
     
     <header className="bg-clear">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
+      <nav aria-label="Global" className="mx-auto flex max-w-none items-center justify-between gap-x-6 p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
@@ -39,23 +40,24 @@ export default function Example() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-lg h2 uppercase font-semibold leading-6 dark:text-neutral-300 text-neutral-800 hover:bg-black/20 hover:rounded-md hover: p-2 ">
+            <a key={item.name} href={item.href} className="text-[16px] uppercase font-semibold tracking-tight leading-6 dark:text-neutral-300 text-neutral-800 hover:bg-black/20 hover:dark:text-white hover:rounded-md">
               {item.name}
             </a>
           ))}
           
         </div>
         <div className="flex flex-1 items-center justify-end gap-x-6">
-          <a href="https://trax.so" className="hidden lg:block h2 uppercase lg:text-lg lg:font-semibold lg:leading-6 dark:text-neutral-100 text-neutral-900">
-            Log in
-          </a>
-          <a
+        <ThemeToggle/>
+         {/*  <a
             href="https://trax.so"
-            className="rounded-md h2 uppercase dark:bg-[#A8FF00] bg-black px-3 py-2 text-lg font-semibold text-white dark:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-full uppercase h2 dark:bg-[#A8FF00] bg-black px-6 py-2 text-lg font-semibold text-white dark:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Sign up
+            SIGN UP, GET $5
+          </a> */}
+          <a href="https://trax.so" className="hidden lg:block uppercase flex inline-flex lg:text-lg lg:font-semibold lg:leading-6 dark:text-neutral-100 text-neutral-900">
+             <span className='flex'> <ArrowDownRight className='inline-flex'/>Sign in</span>
           </a>
-          <ThemeToggle/>
+          
         </div>
         <div className="flex lg:hidden">
           <button

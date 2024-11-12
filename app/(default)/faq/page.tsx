@@ -5,7 +5,7 @@ export const metadata = {
 
 import PageHeader from "@/components/page-header";
 import Accordion from "@/components/accordion";
-import Cta from "@/components/cta";
+import Cta from "@/components/cta-distro";
 
 export default function Faq() {
   const faqs = [

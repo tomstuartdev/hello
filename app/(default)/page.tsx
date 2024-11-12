@@ -11,6 +11,16 @@ import Image5 from '../../public/images/img5.jpg'
 import Image6 from '../../public/images/img6.jpg'
 import Image7 from '../../public/images/img7.jpg'
 import HeroWithGallery from '@/components/hero';
+import Bento from '@/components/bento';
+import AltHero from '@/components/alt-hero';
+import Features from '@/components/features';
+import CTA from '@/components/cta-distro';
+import CTACommunity from '@/components/cta-community';
+import CTARevenue from '@/components/cta-revenue';
+import Story from '@/components/story';
+import HeroMain from '@/components/hero_main';
+import FeaturedIn from '@/components/featured-in';
+import HeroPhone from '@/components/hero-phone';
 
 export const metadata = {
   title: "TRAX | New music starts here",
@@ -32,10 +42,14 @@ export default function Home() {
   const tickerText = "TRAX IS A NEW MUSIC PLATFORM $ NEW MUSIC STARTS HERE $ EXCLUSIVE RELEASES FROM YOUR FAVOURITE ARTISTS $ ";
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <>
+    <section className="relative w-full overflow-hidden">
       <div className='mx-auto'>
-        <HeroWithGallery/>
+        <Bento/>
+        
       </div>
     </section>
+   
+   </>
   );
 }

@@ -4,7 +4,8 @@ export const metadata = {
 };
 
 import PageHeader from "@/components/page-header";
-import Cta from "@/components/cta";
+import Cta from "@/components/cta-distro";
+import Company from "@/components/comapny";
 
 export default function Contact() {
   return (
@@ -12,13 +13,14 @@ export default function Contact() {
     <section>
       <div className="pt-12 pb-12 md:pt-12 md:pb-20">
         <div className="px-4 sm:px-6">
-          <PageHeader
+          {/* <PageHeader
             className="mb-12 md:mb-20"
             title="Get in touch"
             description="Reach out to set up a call, or get in touch with us for customer support, partnerships, or media enquiries."
           >
             Contact us
-          </PageHeader>
+          </PageHeader> */}
+          <Company/>
 
           {/* Contact form */}
           {/* <div className="relative flex items-center justify-center gap-10 before:h-px before:w-full before:border-b before:[border-image:linear-gradient(to_right,transparent,theme(colors.indigo.300/.8),transparent)1] dark:before:[border-image:linear-gradient(to_right,transparent,theme(colors.indigo.300/.16),transparent)1] before:shadow-sm before:shadow-white/20 dark:before:shadow-none after:h-px after:w-full after:border-b after:[border-image:linear-gradient(to_right,transparent,theme(colors.indigo.300/.8),transparent)1] dark:after:[border-image:linear-gradient(to_right,transparent,theme(colors.indigo.300/.16),transparent)1] after:shadow-sm after:shadow-white/20 dark:after:shadow-none mb-16 pb-3">

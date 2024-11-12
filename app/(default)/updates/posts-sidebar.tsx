@@ -50,7 +50,7 @@ export default function PostsSidebar({
           return (
             <li key={index}>
               <a
-                className={`flex items-center font-medium text-md text-gray-800 dark:text-gray-200 px-4 h-9 space-x-4 transition-colors rounded-lg ${selectedCategory === category ? "bg-gradient-to-tr from-[#A8FF00] to-white/50 dark:bg-gradient-to-b dark:from-[#FFFFFF20] dark:to-[#FFFFFF10] shadow shadow-black/5" : "hover:bg-[#A8FF0050] dark:hover:bg-gray-700/20"}`}
+                className={`flex items-center font-medium h2 uppercase text-lg px-4 h-9 space-x-4 transition-colors rounded-lg ${selectedCategory === category ? "bg-gradient-to-tr from-[#000] text-white dark:text-gray-200 to-black/70 dark:bg-gradient-to-b dark:from-[#FFFFFF20] dark:to-[#FFFFFF10] shadow shadow-black/5" : "hover:bg-[#A8FF0050] text-black dark:text-gray-200 dark:hover:bg-gray-700/20"}`}
                 href="#0"
                 onClick={(e) => {
                   e.preventDefault();

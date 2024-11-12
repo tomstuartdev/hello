@@ -11,8 +11,9 @@ import Image7 from '../public/images/imgblanco.png'
 import Image8 from '../public/images/img5.jpg'
 import Image9 from '../public/images/imgkenny.png'
 import { motion } from 'framer-motion';
-import { ArrowDownRightIcon } from '@heroicons/react/24/outline';
+import { ArrowDownRightIcon, MagnifyingGlassCircleIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { PlayCircleFilled } from '@ant-design/icons';
+import { ArrowDownRight, SearchCheck, SearchIcon } from 'lucide-react';
 
 const HeroWithGallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,23 +38,11 @@ const HeroWithGallery = () => {
 
   return (
     <>
-      <div className="bg-black/0 ">
-        <div className="container mx-auto px-4">
-          <div className="overflow-hidden">
-            <motion.div initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.5 }} className='pt-12 text-center mx-auto'>
-            <h1 className='h2 text-7xl sm:text-9xl uppercase dark:text-white text-black tracking-tighter'>New music starts here</h1>
-            <h3 className='text-lg mx-8 mb-8 mt-4 dark:text-white text-black sm:text-2xl'>Discover new releases and exclusive moments from your favourite artists</h3>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.25, delay: 1.25 }} className='pb-12'>
-            <div className='flex px-4 py-4 bg-black dark:bg-[#A8FF00] max-w-60 rounded-lg mx-auto justify-center'>
-            
-            <PlayCircleFilled className="mr-2 w-auto text-2xl text-[#A8FF00] dark:text-[#000]"/>
-            <a href="https://trax.so" className='h2 text-2xl uppercase w-auto text-[#FFF] dark:text-black'> START LISTENING</a>
-            </div>
-            </motion.div>
-            
-            
-            <motion.div 
+      <div className="bg-clear">
+        
+        <div className="container mx-auto max-w-7xl px-4 mt-8 sm:mt-0 overflow-hidden">
+        <h1 className='mb-8 text-3xl text-[#000] dark:text-[#A8FF00] font-semibold h2 uppercase flex'><ArrowDownRight className='inline-flex w-8 mr-1 h-8'/>FEATURED ARTISTS</h1>
+        <motion.div 
               className="flex"
               animate={{ x: -currentIndex * 300 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -61,7 +50,7 @@ const HeroWithGallery = () => {
               {images.map((image, index) => (
                 <motion.div 
                   key={index} 
-                  className="flex-shrink-0 w-[300px] mr-4"
+                  className="flex-shrink-0 w-[400px] mr-4"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -70,7 +59,7 @@ const HeroWithGallery = () => {
                     <Image 
                       src={image.src} 
                       alt={image.title} 
-                      className="w-[300px] h-[400px] sm:h-[400px] rounded-xl object-cover" 
+                      className="w-[400px] sm:w-[400px] h-[90%] sm:h-[500px] rounded-xl object-cover" 
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent">
                       <div className="absolute bottom-0 left-0 p-4 w-full">
@@ -106,6 +95,27 @@ const HeroWithGallery = () => {
                 </motion.div>
               ))}
             </motion.div>
+          <div className="overflow-hidden">
+            <motion.div initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.5 }} className='pt-12 sm:pt-12 text-center mx-auto'>
+           {/*  <h1 className='h2 text-6xl sm:text-8xl uppercase dark:text-white text-black tracking-tighter'>WELCOME to tRAX</h1> */}
+            {/* <h3 className='text-xl mx-8 mb-8 mt-4 max-w-3xl mx-auto dark:text-white text-black sm:text-2xl'>The ultimate platform for independent artists to share music, engage with fans, and build a sustainable career - all in one place.</h3> */}
+            </motion.div>
+            {/* <motion.div initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.25, delay: 1.25 }} className='pb-12 flex flex-col sm:flex-row sm:w-1/2 mx-auto gap-4'>
+            
+            <div className='flex px-4 py-4 bg-black dark:bg-[#A8FF00] w-full rounded-full mx-auto justify-center'>
+            
+            <PlayCircleFilled className="mr-2 w-auto text-2xl text-[#A8FF00] dark:text-[#000]"/>
+            <a href="https://trax.so" className='h2 text-2xl uppercase w-auto text-[#FFF] dark:text-black'> GET STARTED</a>
+            </div>
+            <div className='flex px-4 py-4 bg-black dark:bg-[#FFFFFF20] w-full rounded-full mx-auto justify-center'>
+            
+            <SearchIcon className="mr-2 mt-1 w-auto text-2xl text-[#A8FF00] dark:text-[#FFF]"/>
+            <a href="https://trax.so" className='h2 text-2xl uppercase w-auto text-[#FFF] dark:text-white'> BROWSE ARTISTS</a>
+            </div>
+            </motion.div> */}
+            
+            
+            
           </div>
         </div>
       </div>

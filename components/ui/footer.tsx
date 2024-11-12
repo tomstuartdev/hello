@@ -51,8 +51,9 @@ export default function Example() {
   }, [resolvedTheme])
 
   return (
+    <div className="">
     <footer className="pt-12 border-t-2 border-t border-[#B3B3B320]">
-      <div className="mt-8 px-6 md:order-1 md:mt-0">
+      {/* <div className="mt-8 px-6 md:order-1 md:mt-0">
         <p className="text-left text-[3rem] sm:text-[10rem] leading-[2.5rem] sm:leading-[8rem] h2 tracking-tighter font-bold text-black dark:text-[#FFF]">
           &copy;2024
         </p>
@@ -62,8 +63,8 @@ export default function Example() {
         <p className="text-left text-[3rem] sm:text-[10rem] leading-[2.5rem] sm:leading-[8rem] h2 tracking-tighter font-bold text-black dark:text-[#FFF]">
           ALL RIGHTS RESERVED.
         </p>
-      </div>
-      <div className="mx-auto px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between lg:px-8">
+      </div> */}
+      <div className="w-full px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between lg:px-8">
         <div className="flex flex-row md:flex-row order-1 md:order-1 gap-4 md:mt-0 w-full">
           <div className="w-1/3 md:w-auto flex items-center">
             <a href="/" className="-m-1.5 p-1.5">
@@ -99,5 +100,6 @@ export default function Example() {
         </div>
       </div>
     </footer>
+    </div>
   )
 }

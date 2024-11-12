@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       {/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}
       <body
-        className={` antialiased bg-[#A8FF00] text-gray-800 dark:bg-black dark:text-gray-200 tracking-tight`}
+        className={` antialiased bg-[#F2F2F2] text-gray-800 dark:bg-black dark:text-gray-200 tracking-tight`}
       >
         <Theme>
           <div className="relative flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">

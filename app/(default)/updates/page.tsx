@@ -12,8 +12,9 @@ export const metadata = {
 };
 
 import PageHeader from "@/components/page-header";
-import Cta from "@/components/cta";
+import Cta from "@/components/cta-distro";
 import Posts from "@/app/(default)/updates/posts";
+import CTARevenue from "@/components/cta-revenue";
 
 export default async function Updates() {
   const postsData: Promise<Post[]> = getAllPosts();
@@ -35,7 +36,7 @@ export default async function Updates() {
       </section>
 
       <Posts posts={posts} />
-      <Cta />
+      <CTARevenue/>
     </>
   );
 }
