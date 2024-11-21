@@ -1,315 +1,291 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-import { DollarSign, Users, Music, Instagram, Twitter, Video, Crown, Lock } from 'lucide-react';
-import { PieChart, Pie, Cell, Tooltip, Legend, LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
+import React, { useState } from 'react';
 
-// Move interface outside component
-interface InputFieldProps {
-  icon: React.ElementType;
-  label: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: string;
-  min?: string;
-  step?: string;
-}
+import { Instagram, Music, Twitter, ArrowRight, ArrowLeft, DollarSign } from 'lucide-react';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { InstagramFilled, SpotifyFilled, TikTokFilled, TikTokOutlined, TwitterCircleFilled } from '@ant-design/icons';
+import Link from 'next/link';
 
-// Move InputField component outside main component
-const InputField: React.FC<InputFieldProps> = ({ 
-  icon: Icon, 
-  label, 
-  value, 
-  onChange, 
-  type = "number", 
-  min = "0", 
-  step = "1" 
-}) => (
-  <div className="mb-4 w-full">
-    <label className="block mb-2 flex items-center gap-2 text-md font-semibold text-[#000ß]">
-      <Icon className="w-10 h-10 text-[#FFF] p-2 rounded-lg bg-black" />
-      {label}
-    </label>
-    <input
-      type={type}
-      value={value}
-      onChange={onChange}
-      min={min}
-      step={step}
-      className="w-full px-3 py-2 bg-white/10 h2 text-lg dark:bg-neutral-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-500"
-    />
-  </div>
-);
-
-const RevenueCalculator = () => {
-  const [mounted, setMounted] = useState(false);
-
-  // Initialize with empty strings
-  const [monthlyListeners, setMonthlyListeners] = useState('');
-  const [instagramFollowers, setInstagramFollowers] = useState('');
-  const [twitterFollowers, setTwitterFollowers] = useState('');
-  const [tiktokFollowers, setTiktokFollowers] = useState('');
-  const [conversionRate, setConversionRate] = useState('');
-  const [subscriptionPrice, setSubscriptionPrice] = useState('');
-  const [trackCount, setTrackCount] = useState('');
-  const [averageTrackPrice, setAverageTrackPrice] = useState('');
-
-  // Platform revenue share
-  const ARTIST_SHARE = 0.90;
-
-  const [calculations, setCalculations] = useState({
-    totalFollowing: 0,
-    uniqueFollowing: 0,
-    superfans: 0,
-    subscriptionRevenue: 0,
-    unlockRevenue: 0,
-    totalRevenue: 0,
-    platformFee: 0,
-    netRevenue: 0,
-    annualProjection: 0
+const CreatorEarningsForm = () => {
+  const [step, setStep] = useState(1);
+  const [metrics, setMetrics] = useState({
+    instagramFollowers: 10000,
+    tiktokFollowers: 20000,
+    twitterFollowers: 5000,
+    spotifyListeners: 15000,
+    trackCount: 12,
+    trackPrice: 0.99,
+    subscriptionPrice: 4.99,
+    superfanRate: 2,
   });
 
-  // Set initial values after mount
-  useEffect(() => {
-    setMonthlyListeners('1000');
-    setInstagramFollowers('5000');
-    setTwitterFollowers('2000');
-    setTiktokFollowers('3000');
-    setConversionRate('0.5');
-    setSubscriptionPrice('4.99');
-    setTrackCount('10');
-    setAverageTrackPrice('9.99');
-    setMounted(true);
-  }, []);
-
-  // Generate 12-month projection data
-  const generateProjectionData = (monthlyRevenue: number) => {
-    const growth = 1.05;
-    return Array.from({ length: 12 }, (_, i) => ({
-      month: `Month ${i + 1}`,
-      revenue: monthlyRevenue * Math.pow(growth, i)
-    }));
+  const calculateEarnings = () => {
+    const totalFollowers = metrics.instagramFollowers + metrics.tiktokFollowers + metrics.twitterFollowers + metrics.twitterFollowers;
+    const superfans = Math.floor((totalFollowers) * (metrics.superfanRate / 100));
+    const monthlyEarnings = (superfans * metrics.subscriptionPrice) + 
+                           (superfans * metrics.trackPrice * metrics.trackCount / 12);
+    const equivalentStreams = monthlyEarnings / 0.00238
+    
+    return {
+      monthly: monthlyEarnings,
+      yearly: monthlyEarnings * 12,
+      superfans: superfans,
+      streams: equivalentStreams
+    };
   };
 
-  // Calculate audience overlap and potential revenue
-  useEffect(() => {
-    if (mounted) {
-      const totalFollowing = Number(monthlyListeners) + Number(instagramFollowers) + 
-                           Number(twitterFollowers) + Number(tiktokFollowers);
-      const overlapReduction = 0.7;
-      const uniqueFollowing = totalFollowing * overlapReduction;
-      const superfans = Math.floor(uniqueFollowing * (Number(conversionRate) / 100));
-      
-      const subscriptionRevenue = superfans * Number(subscriptionPrice);
-      const unlockRevenue = superfans * (Number(trackCount) * Number(averageTrackPrice) * 0.3);
-      
-      const totalRevenue = subscriptionRevenue + unlockRevenue;
-      const artistRevenue = totalRevenue * ARTIST_SHARE;
-      const platformFee = totalRevenue * (1 - ARTIST_SHARE);
-      
-      setCalculations({
-        totalFollowing,
-        uniqueFollowing,
-        superfans,
-        subscriptionRevenue,
-        unlockRevenue,
-        totalRevenue,
-        platformFee,
-        netRevenue: artistRevenue,
-        annualProjection: artistRevenue * 12
-      });
-    }
-  }, [mounted, monthlyListeners, instagramFollowers, twitterFollowers, tiktokFollowers, 
-      conversionRate, subscriptionPrice, trackCount, averageTrackPrice]);
-
-  const audienceData = [
-    { name: 'Monthly Listeners', value: Number(monthlyListeners), color: '#10B981' },
-    { name: 'Instagram', value: Number(instagramFollowers), color: '#EC4899' },
-    { name: 'Twitter', value: Number(twitterFollowers), color: '#3B82F6' },
-    { name: 'TikTok', value: Number(tiktokFollowers), color: '#6366F1' }
-  ];
-
-  // Don't render until mounted
-  if (!mounted) {
-    return null;
-  }
-
-  return (
-    <>
-    <div className="w-full max-w-7xl mx-auto overflow-hidden">
-      <div className="p-6">
-        <div className="flex items-center w-full text-center gap-2 mb-6">
-          <h1 className="text-[8rem] h2 uppercase tracking-tighter mx-auto mt-8 mb-12 leading-[5rem] text-black dark:text-[#A8FF00] font-bold">EARNINGS CALCULATOR</h1>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Input Section */}
+  const renderStep = () => {
+    switch(step) {
+      case 1:
+        return (
           <div className="space-y-6">
-            {/* Audience Metrics */}
-            <div>
-              <h3 className="text-2xl text-black dark:text-white h2 uppercase font-semibold tracking-tight mb-4">Audience Metrics</h3>
-              <div className='flex flex-col'>
-                <div className='flex flex-row gap-x-4'>
-                  <InputField
-                    icon={Music}
-                    label="Monthly Listeners"
-                    value={monthlyListeners}
-                    onChange={(e) => setMonthlyListeners(e.target.value)}
-                  />
-                  <InputField
-                    icon={Instagram}
-                    label="Instagram Followers"
-                    value={instagramFollowers}
-                    onChange={(e) => setInstagramFollowers(e.target.value)}
-                  />
-                </div>
-                <div className='flex flex-row gap-x-4'>
-                  <InputField
-                    icon={Twitter}
-                    label="Twitter Followers"
-                    value={twitterFollowers}
-                    onChange={(e) => setTwitterFollowers(e.target.value)}
-                  />
-                  <InputField
-                    icon={Video}
-                    label="TikTok Followers"
-                    value={tiktokFollowers}
-                    onChange={(e) => setTiktokFollowers(e.target.value)}
-                  />
-                </div>
-                <InputField
-                  icon={Users}
-                  label="Superfan Conversion Rate (%)"
-                  value={conversionRate}
-                  onChange={(e) => setConversionRate(e.target.value)}
-                  step="0.1"
+            <h2 className="text-5xl/10 tracking-tighter h2 uppercase font-bold mb-6">Tell us about your online audience</h2>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <label className="flex items-center gap-2">
+                  <InstagramFilled className="w-10 h-10 p-3 rounded-xl bg-pink-600 text-white" />
+                  <span className='text-lg/6 ml-1 font-regular'>How many Instagram followers do you have?</span>
+                </label>
+                <input
+                  type="number"
+                  className="w-full h2 text-xl p-2 dark:bg-neutral-800 border-none rounded-lg"
+                  value={metrics.instagramFollowers}
+                  onChange={(e) => setMetrics({...metrics, instagramFollowers: parseInt(e.target.value) || 0})}
+                  placeholder="Enter number of followers"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="flex items-center gap-2">
+                  <TikTokOutlined className="w-10 h-10 p-3 rounded-xl bg-red-600 text-white" />
+                  <span className='text-lg/6 ml-1 font-regular'>How many TikTok followers do you have?</span>
+                </label>
+                <input
+                  type="number"
+                  className="w-full h2 text-xl p-2 dark:bg-neutral-800 border-none rounded-lg"
+                  value={metrics.tiktokFollowers}
+                  onChange={(e) => setMetrics({...metrics, tiktokFollowers: parseInt(e.target.value) || 0})}
+                  placeholder="Enter number of followers"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="flex items-center gap-2">
+                  <TwitterCircleFilled className="w-10 h-10 bg-blue-400 p-3 rounded-xl text-white" />
+                  <span className='text-lg/6 ml-1 font-regular'>How many Twitter followers do you have?</span>
+                </label>
+                <input
+                  type="number"
+                  className="w-full h2 text-xl p-2 dark:bg-neutral-800 border-none rounded-lg"
+                  value={metrics.twitterFollowers}
+                  onChange={(e) => setMetrics({...metrics, twitterFollowers: parseInt(e.target.value) || 0})}
+                  placeholder="Enter number of followers"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="flex items-center gap-2">
+                  <SpotifyFilled className="w-10 h-10 bg-green-400 p-3 rounded-xl text-black" />
+                  <span className="text-lg/6 ml-1 font-regular">How many monthly listeners do you have?</span>
+                </label>
+                <input
+                  type="number"
+                  className="w-full h2 text-xl p-2 dark:bg-neutral-800 border-none rounded-lg"
+                  value={metrics.spotifyListeners}
+                  onChange={(e) => setMetrics({...metrics, spotifyListeners: parseInt(e.target.value) || 0})}
+                  placeholder="Enter monthly listeners"
                 />
               </div>
             </div>
-
-            {/* Content & Pricing */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Content & Pricing</h3>
-              <InputField
-                icon={Crown}
-                label="Monthly Subscription Price ($)"
-                value={subscriptionPrice}
-                onChange={(e) => setSubscriptionPrice(e.target.value)}
-                step="0.01"
-              />
-              <InputField
-                icon={Lock}
-                label="Number of Unlockable Tracks"
-                value={trackCount}
-                onChange={(e) => setTrackCount(e.target.value)}
-              />
-              <InputField
-                icon={DollarSign}
-                label="Average Track Price ($)"
-                value={averageTrackPrice}
-                onChange={(e) => setAverageTrackPrice(e.target.value)}
-                step="0.01"
-              />
-            </div>
           </div>
+        );
 
-          {/* Results Section */}
+      case 2:
+        return (
           <div className="space-y-6">
-            {/* Audience Analysis */}
-            <div>
-
-              <h3 className="text-2xl h2 uppercase font-semibold ">Audience Analysis</h3>
-              <div className="h-48 mx-auto w-full mb-32">
-                <PieChart width={300} height={300} className='mx-auto'>
-                  <Pie
-                    data={audienceData}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                  >
-                    {audienceData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                  <Legend />
-                </PieChart>
-              </div>
-              <div className="bg-gray-50 dark:bg-neutral-900 rounded-lg p-4 mb-4">
-                <div className="flex justify-between mb-2">
-                  <span className='font-semibold'>Total Following</span>
-                  <span className="font-semibold h2 uppercase text-2xl">{calculations.totalFollowing.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between mb-2">
-                  <span className='font-semibold'>Estimated Unique Following</span>
-                  <span className="font-semibold h2 uppercase text-2xl">{calculations.uniqueFollowing.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between pt-2 border-t dark:border-neutral-700 text-green-600">
-                  <span className='font-semibold'>Projected Superfans</span>
-                  <span className="font-semibold h2 uppercase text-2xl">{calculations.superfans.toLocaleString()}</span>
-                </div>
+            <h2 className="text-5xl/10 h2 uppercase text-black dark:text-white tracking-tighter font-bold mb-6">Tell us about the content you can upload to TRAX</h2>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <label className='text-lg/6'>How many pieces of unreleased content do you have to upload?</label>
+                <input
+                  type="number"
+                  className="w-full dark:bg-neutral-800 p-2 border-none h2 uppercase text-2xl rounded-lg"
+                  value={metrics.trackCount}
+                  onChange={(e) => setMetrics({...metrics, trackCount: parseInt(e.target.value) || 0})}
+                  placeholder="Enter number of tracks"
+                />
               </div>
 
-             
-            </div>
-
-            {/* Revenue Projection */}
-            <div>
-              <h3 className="text-2xl h2 uppercase font-semibold mb-4">Revenue Projection</h3>
-              <div className="dark:bg-neutral-900 bg-white rounded-lg p-4 mb-4">
-                <div className="flex justify-between mb-2">
-                  <span className='font-semibold'>Monthly Subscription Revenue</span>
-                  <span className="font-semibold">${calculations.subscriptionRevenue.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between mb-2">
-                  <span>Monthly Unlockable Revenue:</span>
-                  <span className="font-semibold">${calculations.unlockRevenue.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between pt-2 border-t">
-                  <span>Total Monthly Revenue:</span>
-                  <span className="font-semibold">${calculations.totalRevenue.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between text-red-600">
-                  <span>Platform Fee (10%):</span>
-                  <span className="font-semibold">-${calculations.platformFee.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between pt-2 border-t text-green-600 font-bold">
-                  <span>Net Monthly Revenue:</span>
-                  <span>${calculations.netRevenue.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between mt-4 pt-4 border-t text-blue-600 font-bold">
-                  <span>Projected Annual Revenue:</span>
-                  <span>${calculations.annualProjection.toFixed(2)}</span>
-                </div>
+              <div className="space-y-2">
+                <label className='text-lg/6'>How much would you charge per track? ($)</label>
+                <input
+                  type="number"
+                  step="0.01"
+                  className="w-full dark:bg-neutral-800 p-2 border-none h2 uppercase text-2xl rounded-lg"
+                  value={metrics.trackPrice}
+                  onChange={(e) => setMetrics({...metrics, trackPrice: parseFloat(e.target.value) || 0})}
+                  placeholder="Enter average price"
+                />
               </div>
 
-              <div className="mt-4">
-                <h4 className="font-semibold mb-2">12-Month Growth Projection</h4>
-                <LineChart width={400} height={200} data={generateProjectionData(calculations.netRevenue)}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" angle={-45} textAnchor="end" height={60} />
-                  <YAxis />
-                  <Tooltip formatter={(value) => `$${value.toString()}`} />
-                  <Line type="monotone" dataKey="revenue" stroke="#2563eb" />
-                </LineChart>
+              <div className="space-y-2">
+                <label className='text-lg/6'>How much would you charge for a subscription to these tracks? ($)</label>
+                <input
+                  type="number"
+                  step="0.01"
+                  className="w-full dark:bg-neutral-800 p-2 border-none h2 uppercase text-2xl rounded-lg"
+                  value={metrics.subscriptionPrice}
+                  onChange={(e) => setMetrics({...metrics, subscriptionPrice: parseFloat(e.target.value) || 0})}
+                  placeholder="Enter subscription price"
+                />
               </div>
 
-              {/* CTA Section */}
-              <div className="mt-6 bg-green-50 border border-green-200 rounded-lg p-4">
-                <p className="font-semibold text-green-800 mb-2">Ready to start earning?</p>
-                <p className="text-green-700 mb-4">Join thousands of artists already monetizing their content on our platform. Sign up now and turn your following into revenue!</p>
-                <button className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors">
-                  Get Started Now
-                </button>
+              <div className="space-y-2">
+                <label className='text-lg/6'>What percentage of your followers are superfans? (%)</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  className="w-full dark:bg-neutral-800 p-2 border-none h2 uppercase text-2xl rounded-lg"
+                  value={metrics.superfanRate}
+                  onChange={(e) => setMetrics({...metrics, superfanRate: parseFloat(e.target.value) || 0})}
+                  placeholder="Enter conversion rate"
+                />
               </div>
             </div>
           </div>
+        );
+
+      case 3:
+        const earnings = calculateEarnings();
+        return (
+          <div className="space-y-6">
+            <h2 className="text-5xl h2 uppercase font-bold mb-6">Your Earnings Potential</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl bg-neutral-800">
+                <h3 className="text-sm/6 uppercase font-medium mb-1">Monthly Earnings</h3>
+                <div className="text-5xl h2 mt-4 text-right uppercase font-bold text-[#A8FF00]">
+                  ${earnings.monthly.toFixed(2)}
+                </div>
+              </div>
+              
+              <div className="p-4 rounded-xl bg-neutral-800">
+                <h3 className="text-sm uppercase font-medium mb-1">Yearly Earnings</h3>
+                <div className="text-5xl h2 uppercase text-right mt-4 font-bold text-[#EDFF00]">
+                  ${earnings.yearly.toFixed(2)}
+                </div>
+              </div>
+              
+              <div className="p-4 rounded-xl bg-neutral-800">
+                <h3 className="text-sm uppercase font-medium mb-1">Superfans</h3>
+                <div className="text-5xl text-right h2 mt-4 uppercase font-bold text-purple-600">
+                  {earnings.superfans.toFixed(0)}
+                </div>
+              </div>
+            </div>
+
+            {/* <div className="h-64 mt-6">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={[
+                  { month: 'Current', earnings: earnings.monthly },
+                  { month: 'Month 3', earnings: earnings.monthly * 1.1 },
+                  { month: 'Month 6', earnings: earnings.monthly * 1.2 },
+                  { month: 'Month 9', earnings: earnings.monthly * 1.3 },
+                  { month: 'Month 12', earnings: earnings.monthly * 1.4 },
+                ]}>
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Line 
+                    type="monotone" 
+                    dataKey="earnings" 
+                    stroke="#4F46E5"
+                    strokeWidth={2}
+                    dot={{ fill: '#4F46E5' }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div> */}
+
+            <div className="mt-6 p-4 rounded-lg">
+              <h3 className="font-medium  text-xl/6 mb-8">Based on your audience data and content, we estimate you could earn <span className='font-bold text-black dark:text-[#A8FF00]'>${(calculateEarnings().monthly * 0.6).toFixed(2)}</span> from subscriptions and <span className='font-bold text-black dark:text-[#A8FF00]'>${(calculateEarnings().monthly * 0.3).toFixed(2)}</span> from track sales each month.</h3>
+              <h3 className="font-medium text-xl/6 text-right ml-12 mb-2">That&apos;s equivalent to <span className='font-bold text-black dark:text-[#A8FF00]'> {(earnings.streams.toLocaleString())} </span>monthly streams!</h3>
+              
+            </div>
+          </div>
+        );
+    }
+  };
+
+  return (
+    <div className="max-w-5xl bg-clear rounded-xl mx-auto p-2 sm:p-6">
+      <div className="p-8">
+        {/* Progress bar */}
+        <div className="mb-8">
+          <div className="h-2 bg-neutral-700 rounded-full">
+            <div 
+              className="h-2 bg-[#A8FF00] rounded-full transition-all duration-300"
+              style={{ width: `${(step / 3) * 100}%` }}
+            />
+          </div>
+          <div className="mt-2 text-lg h2 uppercase dark:text-[#A8FF00]">
+            Step {step} of 3
+          </div>
+        </div>
+
+        {renderStep()}
+
+        <div className="flex justify-between mt-8">
+          {step > 1 && (
+            <button
+              type="button"
+              onClick={() => setStep(step - 1)}
+              className="flex items-center gap-2 px-4 py-2 text-neutral-900 h2 uppercase text-2xl bg-white rounded-lg hover:bg-gray-50"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Previous
+            </button>
+          )}
+          
+          {step < 2 && (
+            <button
+              type="button"
+              onClick={() => setStep(step + 1)}
+              className="flex items-center gap-2 px-4 py-2 bg-white text-neutral-900 h2 uppercase text-2xl rounded-lg hover:bg-[#A8FF00] ml-auto"
+            >
+              Next
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          )}
+
+          {step === 2 && (
+            <button
+              type="button"
+              onClick={() => setStep(3)}
+              className="flex items-center gap-2 px-4 py-2 bg-white text-neutral-900 h2 uppercase text-2xl rounded-lg hover:bg-[#A8FF00] ml-auto"
+            >
+              Calculate Earnings
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          )}
+
+          {step === 3 && (
+            <Link href='https://trax.so' >
+            <button
+              type="button"
+              
+              onClick={() => setStep(3)}
+              className="flex items-center gap-2 px-4 py-2 bg-[#A8FF00] text-neutral-900 h2 uppercase text-2xl rounded-lg hover:bg-[#A8FF00] ml-auto"
+            >
+              GET STARTED
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>
-    </>
   );
 };
 
-export default RevenueCalculator;
+export default CreatorEarningsForm;

@@ -171,7 +171,7 @@ export default function Company() {
         <Image alt="" src={hadi} className="size-16 object-cover rounded-lg" />
         <div className="text-md/6">
             <h3 className="font-semibold h2 text-2xl uppercase">Hadi Usmani</h3>
-            <p className="text-neutral-700 dark:text-[#A8FF00] uppercase text-sm font-semibold">CHIEF SNUS OFFICER</p>
+            <p className="text-neutral-700 dark:text-[#A8FF00] uppercase text-sm font-semibold">Head of Growth</p>
         </div>
          </li>
          <li className="flex items-center gap-4">
@@ -195,11 +195,11 @@ export default function Company() {
       <h3  className="text-6xl font-semibold tracking-tighter mt-2">
         Funded by web3 industry-leaders.
       </h3>
-      <h1 className="mt-6 max-w-3xl">
+      {/* <h1 className="mt-6 max-w-3xl">
         We are fortunate to be backed by the best investors in the industry —
         both literal and metaphorical partners in crime.
-      </h1>
-      <h3 className="mt-24 h2 uppercase text-2xl dark:text-white">
+      </h1> */}
+      <h3 className="mt-12 h2 uppercase text-2xl dark:text-white">
         Venture Capital
       </h3>
       <hr className="mt-6 border-t border-gray-200" />
@@ -217,7 +217,7 @@ export default function Company() {
           DFINITY is a blockchain platform and organization focused on building the "Internet Computer" - a decentralized cloud computing network. It aims to create a faster, more scalable blockchain infrastructure that can host web applications and smart contracts. The platform uses their ICP token and novel consensus mechanisms for governance and operations.
           </p>
         </li>
-        <li>
+        {/* <li>
           <img alt="Deccel" src="/investors/deccel.svg" className="h-14" />
           <p className="mt-6 max-w-lg text-sm/6 text-gray-500">
             Deccel has been at the forefront of innovation, investing in
@@ -226,7 +226,7 @@ export default function Company() {
             deniability’ and dedication to looking the other way have helped
             produce some of the world’s most controversial companies.
           </p>
-        </li>
+        </li> */}
       </ul>
       <h3 className="mt-24 h2 uppercase text-2xl">
         Individual investors

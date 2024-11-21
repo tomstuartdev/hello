@@ -34,7 +34,7 @@ const CTACard = () => {
       <div className="relative h-full flex justify-between">
         {/* Left text section */}
         <div className="p-12 space-y-3">
-          <h2 className="text-6xl sm:text-7xl tracking-tighter h2 uppercase font-bold relative group"
+          <h2 className="text-6xl sm:text-7xl sm:leading-[3.5rem] tracking-tighter h2 uppercase font-bold relative group"
             style={{
               background: `linear-gradient(
                 45deg,
@@ -49,7 +49,7 @@ const CTACard = () => {
               WebkitTextFillColor: 'transparent',
               animation: 'shine 3s linear infinite'
             }}>
-            Earn 90%
+            Creator program
             {/* Holographic glow effect */}
             <div 
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -68,7 +68,7 @@ const CTACard = () => {
             />
           </h2>
           <p className="text-gray-200 text-2xl/6 max-w-[280px]">
-            The best rates for creators on the market
+            Apply now to be a part of the first TRAX Creator Program.
           </p>
         </div>
 
@@ -88,7 +88,7 @@ const CTACard = () => {
           
           {/* PRISM text overlay */}
           <div className="absolute bottom-4 right-4 text-white font-medium text-sm bg-white/10 px-2 py-1 rounded backdrop-blur-sm">
-            PRISM
+            GET STARTED
           </div>
         </div>
       </div>

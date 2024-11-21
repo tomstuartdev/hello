@@ -143,7 +143,7 @@ export default function Contact() {
             </div>
           </div> */}
           {/* Cards */}
-          <div className="max-w-xs md:max-w-6xl mx-auto">
+          <div className="max-w-xs md:max-w-7xl mx-auto">
             <div className="grid md:grid-cols-3 gap-6 xl:gap-9 xl:mx-8 max-md:-mx-3">
               {/* Card */}
               <div className="flex flex-col rounded-lg bg-gradient-to-tr from-white/70 to-white/50 dark:bg-gradient-to-b dark:from-neutral-700/50 dark:to-neutral-700/40 p-5">
@@ -223,7 +223,7 @@ export default function Contact() {
       </div>
      
     </section>
-     <Cta />
+     
      </>
   );
 }

@@ -15,6 +15,7 @@ import PageHeader from "@/components/page-header";
 import Cta from "@/components/cta-distro";
 import Posts from "@/app/(default)/updates/posts";
 import CTARevenue from "@/components/cta-revenue";
+import UpdatesBento from "@/components/updates-bento";
 
 export default async function Updates() {
   const postsData: Promise<Post[]> = getAllPosts();
@@ -22,21 +23,7 @@ export default async function Updates() {
 
   return (
     <>
-      <section>
-        <div className="pt-12 pb-12 md:pt-12 md:pb-20">
-          <div className="px-4 sm:px-6">
-            <PageHeader
-              title="News & Updates"
-              description=""
-            >
-              What's New
-            </PageHeader>
-          </div>
-        </div>
-      </section>
-
-      <Posts posts={posts} />
-      <CTARevenue/>
+      <UpdatesBento/>
     </>
   );
 }

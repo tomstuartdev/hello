@@ -52,7 +52,7 @@ export default function Example() {
 
   return (
     <div className="">
-    <footer className="pt-12 border-t-2 border-t border-[#B3B3B320]">
+    <footer className="pt-2 border-t-2 border-t border-[#B3B3B320]">
       {/* <div className="mt-8 px-6 md:order-1 md:mt-0">
         <p className="text-left text-[3rem] sm:text-[10rem] leading-[2.5rem] sm:leading-[8rem] h2 tracking-tighter font-bold text-black dark:text-[#FFF]">
           &copy;2024

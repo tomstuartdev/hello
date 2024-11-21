@@ -97,7 +97,7 @@ const FeaturedArtistCard = () => {
 
       {/* NEW Badge */}
       {artists[currentIndex].isNew && (
-        <div className="absolute top-2 left-2 h2 bg-neutral-700/80 text-white text-lg px-2 py-1 rounded font-medium">
+        <div className="absolute top-2 left-2 h2 bg-neutral-700/80 text-white text-lg px-4 py-1 rounded-2xl font-medium">
           NEW
         </div>
       )}
@@ -113,7 +113,7 @@ const FeaturedArtistCard = () => {
       </div>
 
       {/* Progress Dots */}
-      <div className="absolute bottom-2 right-2 flex gap-1">
+      <div className="absolute top-4 right-4 flex gap-1">
         {artists.map((_, index) => (
           <div
             key={index}
