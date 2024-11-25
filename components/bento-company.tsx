@@ -1,15 +1,15 @@
 'use client'
 import React from 'react';
-import QuizCard from './cards/quiz-card';
-import UploadMusicCard from './cards/upload-card';
+import QuizCard from './cards/company/quiz-card';
+import UploadMusicCard from './cards/company/upload-card';
 import ArtistCarousel from './cards/featured-artist-card';
-import FeaturedArtistCard from './cards/featured-artist-card';
-import ClassOfCard from './cards/class-of-card';
-import InfoCard from './cards/info-card';
-import CTACard from './cards/cta-card';
+import FeaturedArtistCard from './cards/company/featured-artist-card';
+import ClassOfCard from './cards/company/class-of-card';
+import InfoCard from './cards/company/info-card';
+import CTACard from './cards/company/cta-card';
 import { motion } from 'framer-motion';
 
-const BentoGrid = () => {
+const BentoCompany = () => {
   // Animation variants for the container
   const containerVariants = {
     hidden: {},
@@ -39,7 +39,7 @@ const BentoGrid = () => {
 
   return (
     <motion.div 
-      className="grid gap-4 px-4 pb-4 bg-clear max-w-[1440px] sm:mx-auto sm:mx-0"
+      className="grid gap-4 px-0 pb-4 bg-clear max-w-[1440px] sm:mx-auto sm:mx-0"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -57,8 +57,8 @@ const BentoGrid = () => {
         </div>
 
         {/* Center Column */}
-        <div className="flex flex-col  sm:col-span-4 gap-4 order-1 lg:order-none">
-          <motion.div className='relative' variants={cardVariants}>
+        <div className="flex relative flex-col sm:col-span-4 gap-4 order-1 lg:order-none">
+          <motion.div variants={cardVariants}>
             <FeaturedArtistCard/>
           </motion.div>
           
@@ -68,12 +68,12 @@ const BentoGrid = () => {
         </div>
 
         {/* Right Column */}
-        <div className="flex flex-col sm:col-span-2 gap-4 order-3 lg:order-none">
+        <div className="flex relative flex-col sm:col-span-2 gap-4 order-3 lg:order-none">
           <motion.div variants={cardVariants}>
             <UploadMusicCard/>
           </motion.div>
 
-          <motion.div variants={cardVariants}>
+          <motion.div className='relative' variants={cardVariants}>
             <ClassOfCard/>
           </motion.div>
         </div>
@@ -82,4 +82,4 @@ const BentoGrid = () => {
   );
 };
 
-export default BentoGrid;
+export default BentoCompany;

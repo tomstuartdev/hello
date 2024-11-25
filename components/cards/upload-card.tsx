@@ -65,7 +65,6 @@ const UploadMusicCard = () => {
         <Image
           src={logo}
           alt="X Logo"
-          fill
           priority
           className="object-contain relative z-10"
           sizes="400px 200px"

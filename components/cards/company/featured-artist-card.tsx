@@ -3,44 +3,37 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import blanco from '../../public/images/imgblanco.png'
-import goldlink from '../../public/images/imggoldlink.png'
-import whitelies from '../../public/images/imgwhitelies.jpg'
-import alienblaze from '../../public/images/imgalienblaze.png'
-import coults from '../../public/images/imgcoults.png'
+import company1 from '../../../public/images/company1.png'
+import company2 from '../../../public/images/company2.png'
+import company3 from '../../../public/images/company3.png'
+import company4 from '../../../public/images/company4.png'
 
 const FeaturedArtistCard = () => {
   const artists = [
     {
-      name: 'BLANCO',
-      image: blanco,
-      isNew: true,
+      name: 'OUR STORY',
+      image: company1,
+      isNew: false,
       href: 'https://trax.so/blanco'
     },
     {
-      name: 'GOLDLINK',
-      image: goldlink,
+      name: 'OUR STORY',
+      image: company2,
       isNew: false,
       href: 'https://trax.so/goldlink'
     },
     {
-      name: 'WHITE LIES',
-      image: whitelies,
-      isNew: true,
+      name: 'OUR STORY',
+      image: company3,
+      isNew: false,
       href: 'https://trax.so/whitelies'
     },
     {
-      name: 'ALIEN BLAZE',
-      image: alienblaze,
+      name: 'OUR STORY',
+      image: company4,
       isNew: false,
       href: 'https://trax.so/alienblaze'
     },
-    {
-      name: 'COULTS',
-      image: coults,
-      isNew: true,
-      href: 'https://trax.so/coults'
-    }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -66,10 +59,9 @@ const FeaturedArtistCard = () => {
   };
 
   return (
-    <>
     <Link 
       href={artists[currentIndex].href}
-      className="relative bg-zinc-900 rounded-3xl overflow-hidden min-h-[550px] w-full group block"
+      className="relative bg-zinc-900 z-10 rounded-3xl overflow-hidden min-h-[550px] w-full group block"
     >
       {/* Navigation Buttons */}
       <button 
@@ -87,13 +79,13 @@ const FeaturedArtistCard = () => {
       </button>
 
       {/* Image */}
-      <div className="relative w-full h-[550px]">
+      <div className="relative w-full min-h-[550px]">
         <Image
           src={artists[currentIndex].image}
           alt={artists[currentIndex].name}
-          layout="fill"
+          layout='fill'
           objectFit="cover"
-          className="transition-opacity relative duration-500"
+          className="transition-opacity overflow-hidden duration-500"
           priority
         />
         
@@ -130,7 +122,6 @@ const FeaturedArtistCard = () => {
         ))}
       </div>
     </Link>
-    </>
   );
 };
 
